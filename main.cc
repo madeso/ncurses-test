@@ -1,12 +1,25 @@
 #include <ncurses.h>
 
+struct Screen
+{
+  Screen()
+  {
+    initscr();
+  }
+
+  ~Screen()
+  {
+    endwin();
+  }
+};
+
 int main()
 {	
-	initscr();			/* Start curses mode 		  */
+  Screen screen;
+
 	printw("Hello World !!!");	/* Print Hello World		  */
 	refresh();			/* Print it on to the real screen */
 	getch();			/* Wait for user input */
-	endwin();			/* End curses mode		  */
 
 	return 0;
 }
